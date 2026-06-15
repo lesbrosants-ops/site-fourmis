@@ -205,14 +205,14 @@ diapause:"Faible"
 const liste = document.getElementById("liste-especes");
 const recherche = document.getElementById("search");
 const suggestions = document.getElementById("suggestions");
-function afficher(filtre=""){
 
-liste.innerHTML="";
+// AFFICHAGE DES CARTES
+function afficher(filtre = "") {
+
+liste.innerHTML = "";
 
 especes
-.filter(e =>
-e.nom.toLowerCase().includes(filtre.toLowerCase())
-)
+.filter(e => e.nom.toLowerCase().includes(filtre.toLowerCase()))
 .forEach(e => {
 
 liste.innerHTML += `
@@ -235,33 +235,41 @@ liste.innerHTML += `
 
 }
 
+// RECHERCHE + SUGGESTIONS (AJOUT UNIQUEMENT)
 recherche.addEventListener("input", () => {
-afficher(recherche.value);
+
+const valeur = recherche.value.toLowerCase();
+
+afficher(valeur);
+
+suggestions.innerHTML = "";
+
+if (valeur === "") return;
+
+especes
+.filter(e => e.nom.toLowerCase().includes(valeur))
+.slice(0, 5)
+.forEach(e => {
+
+const div = document.createElement("div");
+div.classList.add("suggestion");
+
+div.innerHTML = `
+<img src="${e.image}" alt="${e.nom}">
+<span>${e.nom}</span>
+`;
+
+div.addEventListener("click", () => {
+recherche.value = e.nom;
+suggestions.innerHTML = "";
+afficher(e.nom);
 });
 
+suggestions.appendChild(div);
+
+});
+
+});
+
+// affichage initial
 afficher();
-recherche.addEventListener("input", () => {
-
-    const valeur = recherche.value.toLowerCase();
-
-    suggestions.innerHTML = "";
-
-    if(valeur === ""){
-        return;
-    }
-
-    especes
-    .filter(e => e.nom.toLowerCase().includes(valeur))
-    .slice(0,5)
-    .forEach(e => {
-
-        suggestions.innerHTML += `
-        <div class="suggestion">
-            <img src="${e.image}">
-            <span>${e.nom}</span>
-        </div>
-        `;
-
-    });
-
-});
