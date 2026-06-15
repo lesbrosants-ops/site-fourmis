@@ -40,3 +40,18 @@ nav a{
 .hero p{
     font-size:1.3rem;
 }
+#search{
+    width:90%;
+    max-width:800px;
+    padding:20px;
+    font-size:22px;
+    border:2px solid #ccc;
+    border-radius:15px;
+    margin-top:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+#search:focus{
+    border-color:#4CAF50;
+    outline:none;
+}
