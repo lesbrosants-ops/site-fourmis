@@ -204,7 +204,7 @@ diapause:"Faible"
 
 const liste = document.getElementById("liste-especes");
 const recherche = document.getElementById("search");
-
+const suggestions = document.getElementById("suggestions");
 function afficher(filtre=""){
 
 liste.innerHTML="";
@@ -240,3 +240,28 @@ afficher(recherche.value);
 });
 
 afficher();
+recherche.addEventListener("input", () => {
+
+    const valeur = recherche.value.toLowerCase();
+
+    suggestions.innerHTML = "";
+
+    if(valeur === ""){
+        return;
+    }
+
+    especes
+    .filter(e => e.nom.toLowerCase().includes(valeur))
+    .slice(0,5)
+    .forEach(e => {
+
+        suggestions.innerHTML += `
+        <div class="suggestion">
+            <img src="${e.image}">
+            <span>${e.nom}</span>
+        </div>
+        `;
+
+    });
+
+});
