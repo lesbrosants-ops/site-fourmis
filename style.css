@@ -40,6 +40,8 @@ nav a{
 .hero p{
     font-size:1.3rem;
 }
+
+/* BARRE DE RECHERCHE */
 #search{
     width:90%;
     max-width:800px;
@@ -55,6 +57,55 @@ nav a{
     border-color:#4CAF50;
     outline:none;
 }
+
+/* SUGGESTIONS */
+#suggestions{
+    width:90%;
+    max-width:800px;
+    background:white;
+    border-radius:15px;
+    margin-top:5px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    position:relative;
+    z-index:10;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.suggestion{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:12px;
+    cursor:pointer;
+    transition:0.2s;
+    border-bottom:1px solid #eee;
+    background:white;
+}
+
+.suggestion:last-child{
+    border-bottom:none;
+}
+
+.suggestion:hover{
+    background:#f5f5f5;
+}
+
+.suggestion img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.suggestion span{
+    font-size:18px;
+    font-weight:bold;
+    color:#222;
+}
+
+/* CARTES ESPECES */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
@@ -85,46 +136,4 @@ nav a{
 
 .card h3{
     font-size:18px;
-}
-/* Suggestions recherche */
-
-#suggestions{
-    width:90%;
-    max-width:800px;
-    background:white;
-    border-radius:15px;
-    margin-top:5px;
-    overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,0.15);
-}
-
-.suggestion{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    padding:12px;
-    cursor:pointer;
-    transition:0.2s;
-    border-bottom:1px solid #eee;
-}
-
-.suggestion:last-child{
-    border-bottom:none;
-}
-
-.suggestion:hover{
-    background:#f5f5f5;
-}
-
-.suggestion img{
-    width:60px;
-    height:60px;
-    object-fit:cover;
-    border-radius:10px;
-}
-
-.suggestion span{
-    font-size:18px;
-    font-weight:bold;
-    color:#222;
 }
